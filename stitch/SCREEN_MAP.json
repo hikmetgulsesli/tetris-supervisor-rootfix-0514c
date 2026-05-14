@@ -1,0 +1,38 @@
+[
+  {
+    "screenId": "0cfe0961f7b14aaaa450fd1c0855e484",
+    "name": "Game Board",
+    "type": "game",
+    "description": "Game Board screen"
+  },
+  {
+    "screenId": "c429d860dfd244c99e4e5c4406ea1849",
+    "name": "Main Menu",
+    "type": "menu",
+    "description": "Main Menu screen"
+  },
+  {
+    "screenId": "b77c1f122afb4a15b43cf832ab371f13",
+    "name": "Pause Overlay",
+    "type": "app-screen",
+    "description": "Pause Overlay screen"
+  },
+  {
+    "screenId": "4824cd73183642f681c16b0f4806f04a",
+    "name": "Game Over",
+    "type": "game",
+    "description": "Game Over screen"
+  },
+  {
+    "screenId": "b9458344dd7d44dca490cb8592255c48",
+    "name": "Controls Help",
+    "type": "app-screen",
+    "description": "Controls Help screen"
+  },
+  {
+    "screenId": "ecdf63dab9834c23b1ea489fdcbe5367",
+    "name": "Game Options",
+    "type": "game",
+    "description": "Game Options screen"
+  }
+]

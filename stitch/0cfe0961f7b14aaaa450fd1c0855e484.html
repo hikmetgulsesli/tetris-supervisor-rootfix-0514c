@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arcade Tetris - Play</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#c4e7ff",
+                        "on-surface": "#dee3e8",
+                        "on-primary-fixed": "#001e2c",
+                        "tertiary": "#ffc176",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-container": "#613b00",
+                        "secondary-container": "#6f00be",
+                        "secondary-fixed": "#f0dbff",
+                        "tertiary-container": "#f1a02b",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "inverse-primary": "#00668a",
+                        "on-secondary-container": "#d6a9ff",
+                        "on-primary": "#00354a",
+                        "on-surface-variant": "#bdc8d1",
+                        "secondary": "#ddb7ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "outline": "#87929a",
+                        "surface": "#0f1418",
+                        "surface-variant": "#303539",
+                        "on-background": "#dee3e8",
+                        "surface-container-lowest": "#0a0f12",
+                        "on-primary-fixed-variant": "#004c69",
+                        "inverse-on-surface": "#2c3135",
+                        "primary-container": "#38bdf8",
+                        "surface-tint": "#7bd0ff",
+                        "surface-bright": "#343a3e",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "surface-container-high": "#252b2e",
+                        "error-container": "#93000a",
+                        "primary": "#8ed5ff",
+                        "outline-variant": "#3e484f",
+                        "surface-dim": "#0f1418",
+                        "surface-container-low": "#171c20",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "background": "#0f1418",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-primary-container": "#004965",
+                        "inverse-surface": "#dee3e8",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-secondary": "#490080",
+                        "on-tertiary": "#472a00",
+                        "surface-container-highest": "#303539",
+                        "surface-container": "#1b2024",
+                        "tertiary-fixed-dim": "#ffb960"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "stack-gap": "12px",
+                        "base": "4px",
+                        "grid-gutter": "1px",
+                        "container-padding-sm": "16px",
+                        "container-padding-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .tetris-grid {
+            background-size: 10% 5%;
+            background-image:
+                linear-gradient(to right, rgba(48, 53, 57, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(48, 53, 57, 0.5) 1px, transparent 1px);
+        }
+        .block-inner-glow {
+            box-shadow: inset 2px 2px 0px rgba(255,255,255,0.2), inset -2px -2px 0px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen flex overflow-hidden font-body-md text-body-md selection:bg-primary/30">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-full py-6 gap-stack-gap bg-surface-container-low border-r border-outline-variant docked left-0 h-full w-64 z-20 shadow-2xl">
+<div class="px-6 mb-8">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary-fixed-dim tracking-widest font-black uppercase">NEON_TETRIS</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 opacity-70">V2.0.4-STABLE</p>
+</div>
+<ul class="flex-1 flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-150 active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+</li>
+<!-- Active State -->
+<li>
+<a class="flex items-center gap-4 px-6 py-3 bg-primary-container text-on-primary-container font-bold rounded-r-full mr-4 transition-all duration-150 active:translate-x-1 shadow-[0_0_15px_rgba(56,189,248,0.15)]" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-md text-label-md uppercase">Classic</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-150 active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+<span class="font-label-md text-label-md">Marathon</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-150 active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<span class="font-label-md text-label-md">Sprint</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto">
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-150 active:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-surface-dim to-background">
+<!-- TopAppBar (Mobile Header / Desktop Minimal Header) -->
+<header class="flex justify-between items-center w-full px-container-padding-sm h-touch-target bg-surface border-b border-outline-variant docked full-width top-0 z-20 md:bg-transparent md:border-none md:mt-4">
+<div class="md:hidden">
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-black tracking-tighter text-primary uppercase">ARCADE_TETRIS</h1>
+</div>
+<div class="hidden md:block">
+<!-- Empty space on desktop to push actions right -->
+</div>
+<div class="flex items-center gap-4">
+<button class="w-touch-target h-touch-target flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="w-touch-target h-touch-target flex items-center justify-center text-on-surface-variant hover:bg-surface-variant hover:text-primary transition-colors rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Game Canvas -->
+<div class="flex-1 flex flex-col md:flex-row items-center justify-center p-4 gap-6 md:gap-12 pb-24 md:pb-8 h-full z-10">
+<!-- Left HUD: Hold & Stats (Desktop) / Top (Mobile) -->
+<div class="flex flex-row md:flex-col gap-4 md:gap-8 w-full max-w-md md:w-auto justify-between md:justify-start order-1 md:order-1">
+<!-- Hold Widget -->
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-4 flex flex-col items-center min-w-[100px] shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant mb-4 tracking-widest">HOLD</h2>
+<div class="w-16 h-16 relative flex items-center justify-center">
+<!-- O-Piece in Hold -->
+<div class="w-12 h-12 grid grid-cols-2 grid-rows-2 gap-[1px]">
+<div class="bg-tertiary-fixed block-inner-glow"></div>
+<div class="bg-tertiary-fixed block-inner-glow"></div>
+<div class="bg-tertiary-fixed block-inner-glow"></div>
+<div class="bg-tertiary-fixed block-inner-glow"></div>
+</div>
+</div>
+</div>
+<!-- Stats Widget (Hidden on mobile top, moved to side) -->
+<div class="hidden md:flex flex-col gap-4 w-full">
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-4 text-right shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 tracking-widest">SCORE</h3>
+<p class="font-headline-md text-headline-md text-primary font-mono tabular-nums">042,590</p>
+</div>
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-4 text-right shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 tracking-widest">LEVEL</h3>
+<p class="font-headline-md text-headline-md text-on-surface font-mono tabular-nums">12</p>
+</div>
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-4 text-right shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 tracking-widest">LINES</h3>
+<p class="font-headline-md text-headline-md text-on-surface font-mono tabular-nums">84</p>
+</div>
+</div>
+</div>
+<!-- Center: Game Board -->
+<div class="relative order-2 md:order-2 shrink-0 shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-lg overflow-hidden border-2 border-outline-variant bg-surface-container-lowest">
+<!-- Small internal pause button overlay -->
+<button class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-surface-variant/80 backdrop-blur text-on-surface rounded hover:bg-primary/20 hover:text-primary z-50 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="pause">pause</span>
+</button>
+<!-- Board Dimensions: 10x20 logic. 30px per cell = 300x600 px -->
+<div class="w-[280px] h-[560px] md:w-[320px] md:h-[640px] relative tetris-grid">
+<!-- Falling T-Piece (Active Glow) -->
+<!-- Positioned near top center -->
+<div class="absolute top-[15%] left-[40%] w-[30%] h-[10%] grid grid-cols-3 grid-rows-2 gap-[1px]">
+<div class="col-start-2 bg-secondary block-inner-glow shadow-[0_0_12px_rgba(221,183,255,0.6)]"></div>
+<div class="col-start-1 row-start-2 bg-secondary block-inner-glow shadow-[0_0_12px_rgba(221,183,255,0.6)]"></div>
+<div class="col-start-2 row-start-2 bg-secondary block-inner-glow shadow-[0_0_12px_rgba(221,183,255,0.6)] z-10"></div>
+<div class="col-start-3 row-start-2 bg-secondary block-inner-glow shadow-[0_0_12px_rgba(221,183,255,0.6)]"></div>
+</div>
+<!-- Ghost Piece (T-Piece Outline at bottom) -->
+<div class="absolute bottom-[10%] left-[40%] w-[30%] h-[10%] grid grid-cols-3 grid-rows-2 gap-[1px] opacity-40">
+<div class="col-start-2 border border-secondary bg-transparent"></div>
+<div class="col-start-1 row-start-2 border border-secondary bg-transparent"></div>
+<div class="col-start-2 row-start-2 border border-secondary bg-transparent"></div>
+<div class="col-start-3 row-start-2 border border-secondary bg-transparent"></div>
+</div>
+<!-- Existing Block (Bottom Left) -->
+<div class="absolute bottom-0 left-0 w-[40%] h-[10%] grid grid-cols-4 grid-rows-2 gap-[1px]">
+<div class="col-span-4 row-start-2 bg-primary-fixed-variant block-inner-glow opacity-80"></div>
+<div class="col-start-1 row-start-1 bg-primary-fixed-variant block-inner-glow opacity-80"></div>
+</div>
+</div>
+</div>
+<!-- Right HUD: Next Queue (Desktop) / Top Right (Mobile) -->
+<div class="flex flex-col gap-6 w-full max-w-md md:w-auto order-3 md:order-3">
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant rounded-xl p-4 flex flex-col items-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant mb-4 tracking-widest">NEXT</h2>
+<div class="flex flex-col gap-6 items-center w-16">
+<!-- Next 1: I-Piece -->
+<div class="w-16 h-4 grid grid-cols-4 gap-[1px]">
+<div class="bg-primary-container block-inner-glow"></div>
+<div class="bg-primary-container block-inner-glow"></div>
+<div class="bg-primary-container block-inner-glow"></div>
+<div class="bg-primary-container block-inner-glow"></div>
+</div>
+<!-- Next 2: Z-Piece -->
+<div class="w-12 h-8 grid grid-cols-3 grid-rows-2 gap-[1px] opacity-70 scale-90">
+<div class="col-start-1 bg-error block-inner-glow"></div>
+<div class="col-start-2 bg-error block-inner-glow"></div>
+<div class="col-start-2 row-start-2 bg-error block-inner-glow"></div>
+<div class="col-start-3 row-start-2 bg-error block-inner-glow"></div>
+</div>
+<!-- Next 3: L-Piece -->
+<div class="w-12 h-8 grid grid-cols-3 grid-rows-2 gap-[1px] opacity-40 scale-75">
+<div class="col-start-3 bg-tertiary-container block-inner-glow"></div>
+<div class="col-start-1 row-start-2 bg-tertiary-container block-inner-glow"></div>
+<div class="col-start-2 row-start-2 bg-tertiary-container block-inner-glow"></div>
+<div class="col-start-3 row-start-2 bg-tertiary-container block-inner-glow"></div>
+</div>
+</div>
+</div>
+<!-- Mobile specific stats row (visible only on mobile) -->
+<div class="flex md:hidden justify-between gap-4 mt-2">
+<div class="bg-surface/80 border border-outline-variant rounded flex-1 p-2 text-center">
+<p class="font-label-sm text-[10px] text-on-surface-variant tracking-widest">SCORE</p>
+<p class="font-label-md text-primary">042,590</p>
+</div>
+<div class="bg-surface/80 border border-outline-variant rounded flex-1 p-2 text-center">
+<p class="font-label-sm text-[10px] text-on-surface-variant tracking-widest">LVL</p>
+<p class="font-label-md text-on-surface">12</p>
+</div>
+</div>
+</div>
+<!-- Mobile Controls (Bottom Absolute on Mobile, Hidden on Desktop) -->
+<div class="md:hidden absolute bottom-24 left-0 w-full flex justify-between px-6 z-20 pointer-events-none">
+<!-- D-Pad area -->
+<div class="flex flex-col gap-2 pointer-events-auto">
+<div class="flex justify-center">
+<button class="w-12 h-12 bg-surface-variant/80 border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-primary active:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_up">keyboard_arrow_up</span>
+</button>
+</div>
+<div class="flex gap-10">
+<button class="w-12 h-12 bg-surface-variant/80 border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-primary active:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_left">keyboard_arrow_left</span>
+</button>
+<button class="w-12 h-12 bg-surface-variant/80 border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-primary active:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+</button>
+</div>
+<div class="flex justify-center">
+<button class="w-12 h-12 bg-surface-variant/80 border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-primary active:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-6 justify-end pb-4 pointer-events-auto">
+<button class="w-16 h-16 bg-surface-variant/80 border border-outline-variant rounded-full flex items-center justify-center text-on-surface active:bg-error active:text-on-error transition-colors shadow-lg self-end">
+<span class="material-symbols-outlined" data-icon="rotate_right">rotate_right</span>
+</button>
+<button class="w-20 h-20 bg-primary-container/80 border border-primary border-opacity-50 rounded-full flex items-center justify-center text-on-primary-container active:bg-primary active:scale-95 transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)]">
+<span class="material-symbols-outlined text-3xl" data-icon="keyboard_double_arrow_down">keyboard_double_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-[72px] px-4 pb-safe bg-surface-container border-t border-outline-variant shadow-[0_-4px_20px_rgba(123,208,255,0.15)] rounded-t-xl">
+<!-- Active -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full w-12 h-12 active:scale-90 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-label-sm text-[10px] mt-1 font-bold absolute -bottom-4">Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-sm text-[10px] mt-1">Stats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-sm text-[10px] mt-1">Leaderboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

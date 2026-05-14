@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Main Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#c4e7ff",
+                        "on-surface": "#dee3e8",
+                        "on-primary-fixed": "#001e2c",
+                        "tertiary": "#ffc176",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-container": "#613b00",
+                        "secondary-container": "#6f00be",
+                        "secondary-fixed": "#f0dbff",
+                        "tertiary-container": "#f1a02b",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "inverse-primary": "#00668a",
+                        "on-secondary-container": "#d6a9ff",
+                        "on-primary": "#00354a",
+                        "on-surface-variant": "#bdc8d1",
+                        "secondary": "#ddb7ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "outline": "#87929a",
+                        "surface": "#0f1418",
+                        "surface-variant": "#303539",
+                        "on-background": "#dee3e8",
+                        "surface-container-lowest": "#0a0f12",
+                        "on-primary-fixed-variant": "#004c69",
+                        "inverse-on-surface": "#2c3135",
+                        "primary-container": "#38bdf8",
+                        "surface-tint": "#7bd0ff",
+                        "surface-bright": "#343a3e",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "surface-container-high": "#252b2e",
+                        "error-container": "#93000a",
+                        "primary": "#8ed5ff",
+                        "outline-variant": "#3e484f",
+                        "surface-dim": "#0f1418",
+                        "surface-container-low": "#171c20",
+                        "primary-fixed-dim": "#7bd0ff",
+                        "background": "#0f1418",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-primary-container": "#004965",
+                        "inverse-surface": "#dee3e8",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-secondary": "#490080",
+                        "on-tertiary": "#472a00",
+                        "surface-container-highest": "#303539",
+                        "surface-container": "#1b2024",
+                        "tertiary-fixed-dim": "#ffb960"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "touch-target": "44px",
+                        "stack-gap": "12px",
+                        "base": "4px",
+                        "grid-gutter": "1px",
+                        "container-padding-sm": "16px",
+                        "container-padding-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-hidden selection:bg-primary/30">
+<!-- Ambient Background Layer -->
+<div class="fixed inset-0 z-0">
+<!-- Blurred Gameplay Image -->
+<div class="absolute inset-0 bg-cover bg-center scale-105" data-alt="A static, heavily blurred background showing an intense arcade puzzle game session. Bright neon blue, orange, and purple geometric shapes are faintly visible falling against a pitch-black, deep obsidian void. The lighting mimics a retro-futuristic darkroom environment, creating a high-contrast, moody atmosphere that sets an urgent, competitive tone while remaining out of focus." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0P_7qR7VoSWuCcapNRrPHvN53NgvNh4NpfcrgOg7b5FMVJbz5So-W6MGPOU5cjcik9L-CdhG2WEH92Fj5-jrSd3mgD_JpPRu5BL2E_30Y1eyy9ytynsUk5YwVGk1CY1JIRAeZW9ZYLiulEYI3o1-XEA7-wayxvd8R706w8xQd20ByBNIv-gywQyblP_AzZD_TropG6d_ENdU9RhJNEMZStLuU6kh6pBi2CPQ7V3rkDHNZdFpBR9c2caY9U5I3JgWIeIIt2lTunQQ');">
+</div>
+<!-- Heavy Obsidian Overlay & Blur -->
+<div class="absolute inset-0 bg-background/85 backdrop-blur-[12px]"></div>
+<!-- Subtle Grid Overlay -->
+<div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px); background-size: 48px 48px; opacity: 0.15;">
+</div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center min-h-screen w-full px-container-padding-sm py-container-padding-lg">
+<!-- Center Console Container -->
+<div class="flex flex-col items-center justify-center w-full max-w-md gap-12">
+<!-- Branding Header -->
+<div class="flex flex-col items-center text-center gap-2">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tighter drop-shadow-[0_0_24px_rgba(142,213,255,0.7)] select-none">
+                    TETRIS
+                </h1>
+<div class="flex items-center gap-3 opacity-80">
+<div class="h-[1px] w-8 bg-outline-variant"></div>
+<span class="font-label-md text-label-md text-on-surface-variant tracking-[0.2em] select-none">SUPERVISOR</span>
+<div class="h-[1px] w-8 bg-outline-variant"></div>
+</div>
+</div>
+<!-- Action Menu -->
+<nav aria-label="Main Menu" class="flex flex-col w-full gap-stack-gap">
+<!-- Primary Action -->
+<button class="group relative flex items-center justify-center w-full min-h-[56px] bg-primary/10 border border-primary text-primary font-headline-sm text-headline-sm transition-all duration-200 hover:bg-primary/20 hover:shadow-[0_0_20px_rgba(142,213,255,0.4)] active:scale-[0.98] active:bg-primary active:text-on-primary rounded-DEFAULT overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+<span class="material-symbols-outlined absolute left-container-padding-sm opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">play_arrow</span>
+                    Start Game
+                    <span class="material-symbols-outlined absolute right-container-padding-sm opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">play_arrow</span>
+</button>
+<!-- Secondary Actions List -->
+<div class="flex flex-col w-full gap-base mt-2">
+<button class="flex items-center justify-center w-full min-h-[touch-target] bg-surface-container-low/50 border border-outline-variant text-on-surface font-label-md text-label-md transition-all duration-150 hover:bg-surface-variant hover:border-primary/50 hover:text-primary active:scale-[0.98] rounded-DEFAULT">
+                        Controls Help
+                    </button>
+<button class="flex items-center justify-center w-full min-h-[touch-target] bg-surface-container-low/50 border border-outline-variant text-on-surface font-label-md text-label-md transition-all duration-150 hover:bg-surface-variant hover:border-primary/50 hover:text-primary active:scale-[0.98] rounded-DEFAULT">
+                        Options
+                    </button>
+<button class="flex items-center justify-center w-full min-h-[touch-target] bg-surface-container-low/50 border border-outline-variant text-on-surface font-label-md text-label-md transition-all duration-150 hover:bg-surface-variant hover:border-primary/50 hover:text-primary active:scale-[0.98] rounded-DEFAULT">
+                        High Scores
+                    </button>
+</div>
+</nav>
+<!-- Bottom Status indicator (Optional decorative element to ground the UI) -->
+<div class="absolute bottom-container-padding-lg flex items-center gap-2 opacity-50">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(142,213,255,0.8)]"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">System Online</span>
+</div>
+</div>
+</main>
+</body></html>
