@@ -1,0 +1,575 @@
+[
+  {
+    "screenId": "0cfe0961f7b14aaaa450fd1c0855e484",
+    "screenTitle": "Game Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "home",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Classic",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Marathon",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "Sprint",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 152
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 318
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 322
+      },
+      {
+        "type": "link",
+        "label": "Leaderboard",
+        "href": "#",
+        "line": 326
+      },
+      {
+        "type": "link",
+        "label": "Profile",
+        "href": "#",
+        "line": 330
+      },
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 213
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_up",
+        "line": 285
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_left",
+        "line": 290
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_right",
+        "line": 293
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_down",
+        "line": 298
+      },
+      {
+        "type": "button",
+        "label": "rotate_right",
+        "line": 305
+      },
+      {
+        "type": "button",
+        "label": "keyboard_double_arrow_down",
+        "line": 308
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "home",
+        "href": "#",
+        "line": 126
+      },
+      {
+        "type": "link",
+        "label": "Classic",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Marathon",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "Sprint",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 152
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 318
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 322
+      },
+      {
+        "type": "link",
+        "label": "Leaderboard",
+        "href": "#",
+        "line": 326
+      },
+      {
+        "type": "link",
+        "label": "Profile",
+        "href": "#",
+        "line": 330
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "help_outline",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 213
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_up",
+        "line": 285
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_left",
+        "line": 290
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_right",
+        "line": 293
+      },
+      {
+        "type": "button",
+        "label": "keyboard_arrow_down",
+        "line": 298
+      },
+      {
+        "type": "button",
+        "label": "rotate_right",
+        "line": 305
+      },
+      {
+        "type": "button",
+        "label": "keyboard_double_arrow_down",
+        "line": 308
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 18,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b77c1f122afb4a15b43cf832ab371f13",
+    "screenTitle": "Pause Overlay",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 187
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 191
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "Exit to Menu",
+        "line": 199
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 187
+      },
+      {
+        "type": "button",
+        "label": "Restart Game",
+        "line": 191
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 195
+      },
+      {
+        "type": "button",
+        "label": "Exit to Menu",
+        "line": 199
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "ecdf63dab9834c23b1ea489fdcbe5367",
+    "screenTitle": "Game Options",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "home",
+        "href": "#",
+        "line": 142
+      },
+      {
+        "type": "link",
+        "label": "Classic",
+        "href": "#",
+        "line": 146
+      },
+      {
+        "type": "link",
+        "label": "Marathon",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Sprint",
+        "href": "#",
+        "line": 154
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 185
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 205
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 220
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 243
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 254
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 273
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 284
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "home",
+        "href": "#",
+        "line": 142
+      },
+      {
+        "type": "link",
+        "label": "Classic",
+        "href": "#",
+        "line": 146
+      },
+      {
+        "type": "link",
+        "label": "Marathon",
+        "href": "#",
+        "line": 150
+      },
+      {
+        "type": "link",
+        "label": "Sprint",
+        "href": "#",
+        "line": 154
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 158
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 169
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 185
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 205
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 220
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 243
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 254
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 273
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 284
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "4824cd73183642f681c16b0f4806f04a",
+    "screenTitle": "Game Over",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Now",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "share",
+        "line": 168
+      },
+      {
+        "type": "button",
+        "label": "Main",
+        "line": 172
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Now",
+        "line": 162
+      },
+      {
+        "type": "button",
+        "label": "share",
+        "line": 168
+      },
+      {
+        "type": "button",
+        "label": "Main",
+        "line": 172
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b9458344dd7d44dca490cb8592255c48",
+    "screenTitle": "Controls Help",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 238
+      },
+      {
+        "type": "button",
+        "label": "Help",
+        "line": 242
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Settings",
+        "line": 238
+      },
+      {
+        "type": "button",
+        "label": "Help",
+        "line": 242
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 2,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "c429d860dfd244c99e4e5c4406ea1849",
+    "screenTitle": "Main Menu",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "Controls Help",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "High Scores",
+        "line": 155
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Start Game",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "Controls Help",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "High Scores",
+        "line": 155
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
